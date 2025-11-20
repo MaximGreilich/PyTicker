@@ -1,0 +1,36 @@
+import tkinter as tk
+from PyTick.models import Task
+
+class AppGUI:
+    def __init__(self,master):
+        self.master = master
+        self.tasks = []
+        
+        self.title_var = tk.StringVar()
+        self.date_var = tk.StringVar("YYYY-MM-DD")
+        self.time_var = tk.StringVar("HH:MM")
+        
+        self.setup_input_widgets()
+        
+        def add_task(self):
+            task_title = self.title_var.get().strip()
+            date_str = self.date_var.get().strip()
+            time_str = self.time_var.get().strip()
+            
+            if not task_title: 
+                print("Error: Task title cannot be emptry")
+                return
+            deadline_dt = parse_deadline_str(date_str, time_str)
+
+            if deadline_dt is None: 
+                print(f"Error: Invalid date or time format entered: {date_str}, {time_str}")
+                return
+            
+            new_task = Task(title=task_title, deadline=deadline_dt)
+            self.tasks.append(new_task)
+            
+            self.title_var.set("")
+            
+            
+            print(f"Task added: {new_task.title} - Due: {new_task.deadline}")        
+        

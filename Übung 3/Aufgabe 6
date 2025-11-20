@@ -1,0 +1,22 @@
+#grma1075 94731 
+import re
+class Aufgabe6:
+    pattern = r"^\d{1,2}\.\d{2}(-(beta|rc))?$"
+
+
+test_strings = [
+    "1.05",
+    "10.99-rc",
+    "100.10",
+    "5.01-alpha", 
+    ]
+
+
+for s in test_strings:
+    match = re.search(Aufgabe6.pattern, s)
+    
+    if match:
+        print(f"'{s}':  Gültig")
+    else:
+        print(f"'{s}':  Ungültig")
+  

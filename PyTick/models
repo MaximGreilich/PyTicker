@@ -1,0 +1,20 @@
+from datetime import datetime
+
+class Task: 
+    def __init__(self, title, deadline):
+        self.title = title
+        self.deadline = deadline
+        
+        
+    def parse_deadline_string(date_str, time_str):
+        try:
+            comb_str = date_str + "" + time_str
+            deadline_obj = datetime.strptime(comb_str, "%Y-%m-%d %H:%M")
+            return deadline_obj
+        except ValueError:
+            return None
+        
+    
+        
+        
+        
