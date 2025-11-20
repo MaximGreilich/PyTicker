@@ -1,0 +1,19 @@
+#grma1075 94731
+import statistics
+import math
+
+class Aufgabe_3:
+    measurements = [2.5, 4.8, 1.2, 7.1, 4.8, 2.9, 5.0]
+    mean = statistics.mean(measurements)
+    stdev = statistics.stdev(measurements)
+    fsum = math.fsum(measurements)
+  
+
+
+    dataset_b = [1.4, 3.7, 5.9, 1.3]
+
+    result = pow(min(measurements), max(dataset_b))
+
+    print(f"Gerundeter Mittelwert von measurements: {round(mean,2)}")
+    print(f"Standardabweichung von measurements: {stdev}")
+    print(f"minimalester Wert von measurements hoch den maximalen Wert von dataset_b: {result}")

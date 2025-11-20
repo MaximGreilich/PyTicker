@@ -1,0 +1,14 @@
+#grma1075 94731 
+import re 
+class Aufgabe5: 
+    text = "Der Elefant isst Erdnüsse in der Eifel"
+
+    pattern_e_words = r"\be\w+"
+    e_word_results = re.findall(pattern_e_words, text)
+    print(f"Wörter mit 'e':{e_word_results}")
+
+    patter_snacks = r"Elefant|Erdnüsse"
+    snack_result = re.sub(patter_snacks, "Snack", text)
+    print(snack_result)
+
+#f) regulärer Ausdruck für E-Mail: r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
