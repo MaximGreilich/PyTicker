@@ -1,0 +1,14 @@
+import tkinter as tk 
+from datetime import datetime, timedelta
+import time 
+
+root = tk.Tk()
+root.title("Pyticker - Every second counts")
+root.geometry("600x400")
+root.config(bg="#000000")
+
+txt_label = tk.Label(root, text="Willkommen bei PyTicker!")
+txt_label.config(bg="#003366")
+txt_label.pack(pady=50)
+
+root.mainloop()
