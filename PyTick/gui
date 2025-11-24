@@ -1,13 +1,11 @@
 import tkinter as tk
-from PyTick.models import Task, parse_deadline_str
+from PyTick.models import Task
 
 class AppGUI:
     def __init__(self,master):
         self.master = master
         self.tasks = []
-        
         self.timer_display_var = tk.StringVar(value="00d 00h 00m 00s")
-        
         self.title_var = tk.StringVar()
         self.date_var = tk.StringVar("YYYY-MM-DD")
         self.time_var = tk.StringVar("HH:MM")
@@ -45,50 +43,32 @@ class AppGUI:
             
             print(f"Task added: {new_task.title} - Due: {new_task.deadline}")        
             
-            # PyTick/gui.py
-
-
 
     def get_closest_task(self):
-        
         active_tasks = [t for t in self.tasks if not getattr(t, 'completed', False)]
-        
         if not active_tasks:
             return None
         
-
         active_tasks.sort(key=lambda task: task.deadline) 
         return active_tasks[0]
-
 
     def update_timer(self):
 
         closest_task = self.get_closest_task()
-        
         if closest_task:
-         
             from PyTick.models import get_time_remaining, format_timedelta 
-            
-       
             time_remaining_td = get_time_remaining(closest_task.deadline)
-            
-   
             formatted_time = format_timedelta(time_remaining_td)
-            
-
             self.timer_display_var.set(formatted_time)
             
-   
             if time_remaining_td.total_seconds() <= 0:
                 self.timer_label.config(bg="red")
             else:
                 self.timer_label.config(bg="#2C3E50")
-
         else:
       
             self.timer_display_var.set("No Tasks Active")
             self.timer_label.config(bg="#3498DB") 
             
-  
         self.master.after(1000, self.update_timer)
         
