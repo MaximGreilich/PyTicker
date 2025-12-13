@@ -1,0 +1,19 @@
+# .gitignore
+
+# Ignoriert die Testdatei
+Test.py
+
+# Ignoriert alle Übungsordner (Wildcard für die Zahl)
+*Übung 1/
+*Übung 2/
+*Übung 3/
+*Übung 4/
+*Übung 5/
+
+# Ignoriert alle Dateien in Ordnern, die den komplexen Namen enthalten
+*[L03]234bung*
+
+# Allgemeine Python/VS Code Ignorierungen
+__pycache__/
+*.pyc
+.vscode/
