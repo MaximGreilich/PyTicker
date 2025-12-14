@@ -34,6 +34,7 @@ class AppGUI:
         #Startet den Timer-Update-Zyklus (ruft update_timer alle 1000 ms auf)
         self.update_timer()
         
+        
     
         
     def add_task(self):
@@ -140,3 +141,34 @@ class AppGUI:
             text="✅ Mark as Done",
             command=self.mark).pack(pady=5)
         
+        
+    def delete_task(self):
+        selected_indices = self.task_listbox.curselection()
+        if not selected_indices:
+            return
+        
+        selected_index = selected_indices[0]
+        task_to_delete = self.tasks[selected_index]
+        self.tasks.remove(task_to_delete)
+        
+        self.update_task_listbox()
+        
+    def mark_task_as_done(self):
+        selected_indices = self.task_listbox.curselection()
+        if not selected_indices:
+            return
+        
+        selected_index = selected_indices[0]
+        task_to_mark = self.tasks[selected_index]
+        task_to_mark.completed = True
+        
+        self.update_task_listbox()
+    
+   
+    def update_task_listbox(self):
+        self.task_listbox.delete(0, tk.END)
+        for task in self.tasks:
+            status = "✅" if getattr(task, 'completed', False) else "❌"
+            self.task_listbox.insert(tk.END, f"{status} {task.title} - Due: {task.deadline}")
+            
+    
