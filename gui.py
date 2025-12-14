@@ -113,3 +113,30 @@ class AppGUI:
         bg="#27AE60", fg="white"
         ).pack(pady=10)
         
+    def setup_task_list_widgets(self):
+        self.list.container = tk.Frame(self.master, bg="#ECF0F1")
+        self.list.container.pack(pady=10, padx=10, fill=tk.BOTH, expand=True)
+        
+        self.task_listbox = tk.Listbox(
+            self.list_container,
+            height=8,
+            selectmode=tk.SINGLE,
+            font=("Arial", 12),
+            bg="#ECF0F1",
+            fg="#2C3E50",
+            
+        )
+        
+        self.task_listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        
+        scrollbar = tk.Scrollbar(self.list_container, orient=tk.VERTICAL)
+        scrollbar.config(command=self.task_listbox.yview)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        
+        self.task_listbox.config(yscrollcommand=scrollbar.set)
+        
+        tk.Button(
+            self.master,
+            text="✅ Mark as Done",
+            command=self.mark).pack(pady=5)
+        
